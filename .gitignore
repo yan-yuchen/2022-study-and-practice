@@ -8,3 +8,6 @@
 **.html
 Taxi_HKUST/taxi/
 T-drive Taxi Trajectories/release/
+pytorch_study/data
+pytorch_study/resources
+pytorch_study/runs
