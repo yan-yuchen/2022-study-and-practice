@@ -8,9 +8,12 @@
 **.html
 **.pth  
 **.ph  
+**.mp3
+**.mp4
 Taxi_HKUST/taxi/
 T-drive Taxi Trajectories/release/
 pytorch_study/data
 pytorch_study/resources
 pytorch_study/runs
 GAN_study/GAN-MNIST/mnist_data/ 
+
