@@ -1,0 +1,59 @@
+/*标签选择器，选择所有标签*/
+
+div{
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+    margin: 10px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+p{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 17, 0);
+}
+
+p:nth-child(2n){   /*位置伪类选择器,将2的倍数p变为绿色*/
+    background-color: rgb(0, 255, 34);
+}
+
+p:target{  /*当url指向该元素时生效*/
+    background-color: rgb(241, 32, 207);
+    transition: 3s;
+
+}
+
+/*类选择器，根据类名class确定*/
+.red-tag{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+}
+
+.blue-p{
+    background-color: lightblue;
+}
+
+/*伪类选择器,伪类用于定义元素的特殊状态*/
+/*悬浮效果*/
+.effect:hover{
+    background-color: crimson;
+    transform: scale(1.1);
+    transition: 100ms;
+}
+
+ 
+a:link{
+    color: red;
+}
+
+
+a:hover{
+    color:green;
+}
