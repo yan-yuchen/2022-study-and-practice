@@ -1,0 +1,33 @@
+{
+    "os": "Windows-10-10.0.19042-SP0",
+    "python": "3.9.10",
+    "heartbeatAt": "2022-03-14T08:25:00.451070",
+    "startedAt": "2022-03-14T08:24:56.835475",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1050 Ti",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "--dataroot",
+        "datasets/orange2apple/testA",
+        "--name",
+        "orange2apple_pretrained",
+        "--model",
+        "test",
+        "--no_dropout",
+        "--use_wandb"
+    ],
+    "state": "running",
+    "program": "d:\\study_by_YYC\\2022-study-and-practice\\GAN_study\\pytorch-CycleGAN-and-pix2pix-master\\test.py",
+    "codePath": "GAN_study\\pytorch-CycleGAN-and-pix2pix-master\\test.py",
+    "git": {
+        "remote": null,
+        "commit": "db9ba69d022c4686b839a9c4748d909d43ce8125"
+    },
+    "email": null,
+    "root": "D:/study_by_YYC/2022-study-and-practice",
+    "host": "LAPTOP-UP9HINRN",
+    "username": "aaa",
+    "executable": "D:\\miniconda3\\envs\\pytorch_env\\python.exe"
+}
