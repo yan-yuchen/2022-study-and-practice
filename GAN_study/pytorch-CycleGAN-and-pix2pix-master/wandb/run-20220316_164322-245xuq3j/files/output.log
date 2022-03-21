@@ -1,0 +1,12 @@
+
+creating web directory ./results/vangogh2photo_pretrained\test_latest
+processing (0000)-th image... ['datasets/vangogh2photo/testA\\00001.jpg']
+processing (0005)-th image... ['datasets/vangogh2photo/testA\\00006.jpg']
+processing (0010)-th image... ['datasets/vangogh2photo/testA\\00011.jpg']
+processing (0015)-th image... ['datasets/vangogh2photo/testA\\00018.jpg']
+processing (0020)-th image... ['datasets/vangogh2photo/testA\\00028.jpg']
+processing (0025)-th image... ['datasets/vangogh2photo/testA\\00042.jpg']
+processing (0030)-th image... ['datasets/vangogh2photo/testA\\00050.jpg']
+processing (0035)-th image... ['datasets/vangogh2photo/testA\\00057.jpg']
+processing (0040)-th image... ['datasets/vangogh2photo/testA\\00082.jpg']
+processing (0045)-th image... ['datasets/vangogh2photo/testA\\00093.jpg']

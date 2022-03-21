@@ -1,0 +1,13 @@
+div{
+    height: 400px;
+}
+
+.mydiv{
+    width: 400px;
+    height: 200px;
+    background-image: url('/images/mountain.jpg'),url('/images/logo.png');
+    background-color: aqua;
+    background-size: 50% 100%,50% 100%;
+    background-repeat: no-repeat;
+    background-position: left top,200px top;  /*总width是400px，第二张图就要从200px开始画，两者才能并列分布*/
+}

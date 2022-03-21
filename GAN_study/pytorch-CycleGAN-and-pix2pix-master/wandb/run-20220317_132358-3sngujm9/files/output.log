@@ -1,0 +1,11 @@
+creating web directory ./results/photo2ukiyoe_pretrained\test_latest
+processing (0000)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-01 17_41_55.jpg']
+processing (0005)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-02 19_18_15.jpg']
+processing (0010)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-04 10_13_12.jpg']
+processing (0015)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-05 03_00_51.jpg']
+processing (0020)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-05 21_54_30.jpg']
+processing (0025)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-06 17_25_15.jpg']
+processing (0030)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-07 22_18_53.jpg']
+processing (0035)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-10 20_02_04.jpg']
+processing (0040)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-12 04_31_04.jpg']
+processing (0045)-th image... ['datasets/photo2ukiyoe/testA\\2014-08-13 09_33_33.jpg']
