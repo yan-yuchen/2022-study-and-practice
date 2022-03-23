@@ -1,0 +1,203 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.11
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.9.10
+    start_time: 1647957915
+    t:
+      1:
+      - 1
+      - 41
+      3:
+      - 13
+      - 16
+      4: 3.9.10
+      5: 0.12.11
+      8:
+      - 3
+      - 5
+      9:
+        2: CycleGAN-and-pix2pix
+batch_size:
+  desc: null
+  value: 1
+beta1:
+  desc: null
+  value: 0.5
+checkpoints_dir:
+  desc: null
+  value: ./checkpoints
+continue_train:
+  desc: null
+  value: false
+crop_size:
+  desc: null
+  value: 256
+dataroot:
+  desc: null
+  value: ./datasets/horse2zebra
+dataset_mode:
+  desc: null
+  value: unaligned
+direction:
+  desc: null
+  value: AtoB
+display_env:
+  desc: null
+  value: main
+display_freq:
+  desc: null
+  value: 400
+display_id:
+  desc: null
+  value: 1
+display_ncols:
+  desc: null
+  value: 4
+display_port:
+  desc: null
+  value: 8097
+display_server:
+  desc: null
+  value: http://localhost
+display_winsize:
+  desc: null
+  value: 256
+epoch:
+  desc: null
+  value: latest
+epoch_count:
+  desc: null
+  value: 1
+gan_mode:
+  desc: null
+  value: lsgan
+gpu_ids:
+  desc: null
+  value:
+  - 0
+init_gain:
+  desc: null
+  value: 0.02
+init_type:
+  desc: null
+  value: normal
+input_nc:
+  desc: null
+  value: 3
+isTrain:
+  desc: null
+  value: true
+lambda_A:
+  desc: null
+  value: 10.0
+lambda_B:
+  desc: null
+  value: 10.0
+lambda_identity:
+  desc: null
+  value: 0.5
+load_iter:
+  desc: null
+  value: 0
+load_size:
+  desc: null
+  value: 286
+lr:
+  desc: null
+  value: 0.0002
+lr_decay_iters:
+  desc: null
+  value: 50
+lr_policy:
+  desc: null
+  value: linear
+max_dataset_size:
+  desc: null
+  value: .inf
+model:
+  desc: null
+  value: cycle_gan
+n_epochs:
+  desc: null
+  value: 100
+n_epochs_decay:
+  desc: null
+  value: 100
+n_layers_D:
+  desc: null
+  value: 3
+name:
+  desc: null
+  value: horse2zebra
+ndf:
+  desc: null
+  value: 64
+netD:
+  desc: null
+  value: basic
+netG:
+  desc: null
+  value: resnet_9blocks
+ngf:
+  desc: null
+  value: 64
+no_dropout:
+  desc: null
+  value: true
+no_flip:
+  desc: null
+  value: false
+no_html:
+  desc: null
+  value: false
+norm:
+  desc: null
+  value: instance
+num_threads:
+  desc: null
+  value: 4
+output_nc:
+  desc: null
+  value: 3
+phase:
+  desc: null
+  value: train
+pool_size:
+  desc: null
+  value: 50
+preprocess:
+  desc: null
+  value: resize_and_crop
+print_freq:
+  desc: null
+  value: 100
+save_by_iter:
+  desc: null
+  value: false
+save_epoch_freq:
+  desc: null
+  value: 5
+save_latest_freq:
+  desc: null
+  value: 5000
+serial_batches:
+  desc: null
+  value: false
+suffix:
+  desc: null
+  value: ''
+update_html_freq:
+  desc: null
+  value: 1000
+use_wandb:
+  desc: null
+  value: true
+verbose:
+  desc: null
+  value: false

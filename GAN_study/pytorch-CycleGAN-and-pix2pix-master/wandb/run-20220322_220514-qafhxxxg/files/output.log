@@ -1,0 +1,3 @@
+create web directory ./checkpoints\horse2zebra\web...
+learning rate 0.0002000 -> 0.0002000
+D:\miniconda3\envs\pytorch_env\lib\site-packages\torch\optim\lr_scheduler.py:129: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate

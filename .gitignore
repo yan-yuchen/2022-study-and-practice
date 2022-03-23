@@ -10,6 +10,7 @@
 **.ph  
 **.mp3
 **.mp4
+**.pyc
 Taxi_HKUST/taxi/
 T-drive Taxi Trajectories/release/
 pytorch_study/data

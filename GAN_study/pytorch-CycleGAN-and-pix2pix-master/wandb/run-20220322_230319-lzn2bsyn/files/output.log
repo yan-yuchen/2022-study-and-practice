@@ -1,0 +1,68 @@
+create web directory ./checkpoints\horse2zebra\web...
+learning rate 0.0002000 -> 0.0002000
+D:\miniconda3\envs\pytorch_env\lib\site-packages\torch\optim\lr_scheduler.py:129: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+(epoch: 1, iters: 100, time: 2.288, data: 15.828) D_A: 0.460 G_A: 0.422 cycle_A: 6.709 idt_A: 1.232 D_B: 0.601 G_B: 0.416 cycle_B: 2.933 idt_B: 3.326
+Traceback (most recent call last):
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\util\connection.py", line 95, in create_connection
+    raise err
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "D:\miniconda3\envs\pytorch_env\lib\http\client.py", line 1285, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\miniconda3\envs\pytorch_env\lib\http\client.py", line 1331, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\miniconda3\envs\pytorch_env\lib\http\client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\miniconda3\envs\pytorch_env\lib\http\client.py", line 1040, in _send_output
+    self.send(msg)
+  File "D:\miniconda3\envs\pytorch_env\lib\http\client.py", line 980, in send
+    self.connect()
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000002239EF96F10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\requests\adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002239EF96F10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\visdom\__init__.py", line 708, in _send
+    return self._handle_post(
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\visdom\__init__.py", line 677, in _handle_post
+    r = self.session.post(url, data=data)
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\requests\sessions.py", line 577, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\miniconda3\envs\pytorch_env\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002239EF96F10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+Exception in user code:
+------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\study_by_YYC\2022-study-and-practice\GAN_study\pytorch-CycleGAN-and-pix2pix-master\train.py", line 61, in <module>
+    model.set_input(data)
+  File "D:\study_by_YYC\2022-study-and-practice\GAN_study\pytorch-CycleGAN-and-pix2pix-master\models\cycle_gan_model.py", line 108, in set_input
+    self.real_A = input['A' if AtoB else 'B'].to(self.device)
+KeyboardInterrupt

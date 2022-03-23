@@ -1,0 +1,32 @@
+{
+    "os": "Windows-10-10.0.19042-SP0",
+    "python": "3.9.10",
+    "heartbeatAt": "2022-03-22T15:04:13.634255",
+    "startedAt": "2022-03-22T15:03:19.933182",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1050 Ti",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "--dataroot",
+        "./datasets/horse2zebra",
+        "--name",
+        "horse2zebra",
+        "--model",
+        "cycle_gan",
+        "--use_wandb"
+    ],
+    "state": "running",
+    "program": "D:\\study_by_YYC\\2022-study-and-practice\\GAN_study\\pytorch-CycleGAN-and-pix2pix-master\\train.py",
+    "codePath": "GAN_study\\pytorch-CycleGAN-and-pix2pix-master\\train.py",
+    "git": {
+        "remote": null,
+        "commit": "8e171fe1355b64791823014201cfc2f2cafe3e8b"
+    },
+    "email": null,
+    "root": "D:/study_by_YYC/2022-study-and-practice",
+    "host": "LAPTOP-UP9HINRN",
+    "username": "aaa",
+    "executable": "D:\\miniconda3\\envs\\pytorch_env\\python.exe"
+}
