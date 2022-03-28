@@ -12,7 +12,7 @@
 **.mp3
 **.mp4
 **.pyc
-!GAN_study/PyTorch-Multi-Style-Transfer-master/experiments/images  
+**.model
 Taxi_HKUST/taxi/
 T-drive Taxi Trajectories/release/
 pytorch_study/data
