@@ -9,6 +9,7 @@ It then does standard network training. During the training, it also visualize/s
 The script supports continue/resume training. Use '--continue_train' to resume your previous training.
 
 Example:
+    #--dataroot 为选择dataset的根目录 --name 为模型名称 --model为选择模型 
     Train a CycleGAN model:
         python train.py --dataroot ./datasets/maps --name maps_cyclegan --model cycle_gan
     Train a pix2pix model:
@@ -26,12 +27,15 @@ from util.visualizer import Visualizer
 
 
 if __name__ == '__main__':
-    opt = TrainOptions().parse()   # get training options
+    # 获得数据
+    # get training options,在options文件夹中的train_options.py,获得训练的一些选项
+    opt = TrainOptions().parse()
     # create a dataset given opt.dataset_mode and other options
     dataset = create_dataset(opt)
     dataset_size = len(dataset)    # get the number of images in the dataset.
     print('The number of training images = %d' % dataset_size)
 
+    # 创建模型
     # create a model given opt.model and other options
     model = create_model(opt)
     # regular setup: load and print networks; create schedulers
@@ -40,6 +44,7 @@ if __name__ == '__main__':
     visualizer = Visualizer(opt)
     total_iters = 0                # the total number of training iterations
 
+    # 训练
     # outer loop for different epochs; we save the model by <epoch_count>, <epoch_count>+<save_latest_freq>
     for epoch in range(opt.epoch_count, opt.n_epochs + opt.n_epochs_decay + 1):
         epoch_start_time = time.time()  # timer for entire epoch
@@ -47,7 +52,8 @@ if __name__ == '__main__':
         # the number of training iterations in current epoch, reset to 0 every epoch
         epoch_iter = 0
         # reset the visualizer: make sure it saves the results to HTML at least once every epoch
-        visualizer.reset()
+        visualizer.reset()  # 至少一个epoch向visualizer保存结果
+
         # update learning rates in the beginning of every epoch.
         model.update_learning_rate()
         for i, data in enumerate(dataset):  # inner loop within one epoch
@@ -57,17 +63,21 @@ if __name__ == '__main__':
 
             total_iters += opt.batch_size
             epoch_iter += opt.batch_size
+
             # unpack data from dataset and apply preprocessing
             model.set_input(data)
+
             # calculate loss functions, get gradients, update network weights
             model.optimize_parameters()
 
+            # 被total_iters整除时将结果展示于visdom并存到html文件中
             if total_iters % opt.display_freq == 0:   # display images on visdom and save images to a HTML file
                 save_result = total_iters % opt.update_html_freq == 0
                 model.compute_visuals()
                 visualizer.display_current_results(
                     model.get_current_visuals(), epoch, save_result)
 
+            # 被total_iters整除时将loss展示于visdom并输出到工作台
             if total_iters % opt.print_freq == 0:    # print training losses and save logging information to the disk
                 losses = model.get_current_losses()
                 t_comp = (time.time() - iter_start_time) / opt.batch_size
@@ -77,6 +87,7 @@ if __name__ == '__main__':
                     visualizer.plot_current_losses(
                         epoch, float(epoch_iter) / dataset_size, losses)
 
+            # 被total_iters整除时保存latest模型
             if total_iters % opt.save_latest_freq == 0:   # cache our latest model every <save_latest_freq> iterations
                 print('saving the latest model (epoch %d, total_iters %d)' %
                       (epoch, total_iters))
@@ -84,11 +95,14 @@ if __name__ == '__main__':
                 model.save_networks(save_suffix)
 
             iter_data_time = time.time()
+
+        # 被epoch整除时保存latest和对应epoch名命名的模型(这里是5)
         if epoch % opt.save_epoch_freq == 0:              # cache our model every <save_epoch_freq> epochs
             print('saving the model at the end of epoch %d, iters %d' %
                   (epoch, total_iters))
             model.save_networks('latest')
             model.save_networks(epoch)
 
+        # 每个epoch结束会输出相应情况以及总时间
         print('End of epoch %d / %d \t Time Taken: %d sec' % (epoch,
               opt.n_epochs + opt.n_epochs_decay, time.time() - epoch_start_time))
