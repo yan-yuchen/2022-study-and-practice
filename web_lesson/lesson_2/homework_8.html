@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+            margin: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            margin: 20px;
+        }
+
+        div:nth-child(1) {
+            position: static;
+        }
+
+        div:nth-child(2) {
+            position: relative;
+            left: 50px;
+            top: 15px;
+        }
+
+        div:nth-child(3) {
+            position: absolute;
+            background-color: rgba(0, 0, 255, 0.5);
+            left: 30px;
+            top: 30px;
+        }
+
+        div:nth-child(4) {
+            position: fixed;
+            background-color: rgba(0, 255, 0, 0.5);
+            left: 100px;
+            top: 250px;
+        }
+
+        div:nth-child(10) {
+            position: sticky;
+            background-color: rgba(255, 0, 0, 0.5);
+            bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+</body>
+
+</html>

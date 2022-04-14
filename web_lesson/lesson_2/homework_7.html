@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 所有div标签满足：
+        宽度和高度均为300px；
+        内边距与外边距均为10px；
+        背景颜色为lightblue；
+        边框样式为solid 10px gray； */
+        div {
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            margin: 10px;
+            background-color: lightblue;
+            border: solid 10px gray;
+        }
+
+        /* 第一个div为内容盒子模型。 */
+        div:nth-child(1) {
+            box-sizing: content-box;
+        }
+
+        /* 第二个div为边框盒子模型。 */
+        div:nth-child(2) {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+</body>
+
+</html>

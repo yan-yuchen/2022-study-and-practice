@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 所有包含container类的标签满足：
+        display属性为flex；
+        宽度为50%；
+        高度为500px；
+        背景颜色为lightblue；
+        外边距为10px； */
+        .container {
+            display: flex;
+            width: 50%;
+            height: 500px;
+            background-color: lightblue;
+            margin: 10px;
+        }
+
+        /* 所有container类标签的子标签满足：
+        宽度与高度均为120px； */
+        .container>div {
+            width: 120px;
+            height: 120px;
+        }
+
+        /* 所有container类标签的第奇数个子元素满足：
+        背景颜色为：lightsalmon； */
+        .container>div:nth-child(odd) {
+            background-color: lightsalmon;
+        }
+
+        /* 所有container类标签的第偶数个子元素满足：
+        背景颜色为lightgreen； */
+        .container>div:nth-child(even) {
+            background-color: lightgreen;
+        }
+
+        /* 第一个container类标签满足：
+        flex-wrap属性为wrap；
+        justify-content属性为space-between；
+        align-content属性为flex-start； */
+        .container:nth-child(1) {
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: flex-start;
+        }
+
+        /* 第二个container类标签满足：
+        flex-direction属性为row-reverse；
+        flex-wrap属性为nowrap； */
+        .container:nth-child(2) {
+            flex-direction: row-reverse;
+            flex-wrap: nowrap;
+        }
+
+        /* 第二个container类标签的所有第奇数个子标签满足：
+        flex-grow属性为3；
+        flex-shrink属性为3； */
+        .container:nth-child(2)>div:nth-child(odd) {
+            flex-grow: 3;
+            flex-shrink: 3;
+        }
+
+        /* 第二个container类标签的所有第偶数个子标签满足：
+        flex-grow属性为1；
+        flex-shrink属性为1； */
+        .container:nth-child(2)>div:nth-child(even) {
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 所有div标签的字体颜色设置为white，宽度和高度均设置为300px */
+        div {
+            color: white;
+            height: 300px;
+            width: 300px;
+        }
+
+        /* 从前往后数，第奇数个div的背景颜色设置为：#0000FF。 */
+        div:nth-child(odd) {
+            background-color: #0000FF;
+        }
+
+        /* 从前往后数，第偶数个div的背景颜色设置为：rgba(255, 0, 0, 0.7)。 */
+        div:nth-child(even) {
+            background-color: rgba(255, 0, 0, 0.7);
+        }
+
+        /* 所有包含small-div类的div的宽度和高度均设置为200px。 */
+        .small-div {
+            height: 200px;
+            width: 200px;
+        }
+
+        /* id为big-div的div的宽度和高度均设置为400px。 */
+        #big-div {
+            height: 400px;
+            width: 400px;
+        }
+
+        /* 对于所有包含hover-div类的div，当鼠标悬浮时，背景颜色变成orange。 */
+        .hover-div:hover {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="small-div">1</div>
+    <div id="big-div">2</div>
+    <div>3</div>
+    <div class="small-div">4</div>
+    <div class="small-div hover-div">5</div>
+    <div>6</div>
+    <div>7</div>
+    <div class="hover-div">8</div>
+    <div>9</div>
+    <div>10</div>
+</body>
+
+</html>

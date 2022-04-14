@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 包含container类的标签满足：
+        isplay属性为block；
+        宽度和高度均为500px；
+        内边距为10px；
+        外边距为20px；
+        背景颜色为lightblue； */
+        .container {
+            display: block;
+            height: 500px;
+            width: 500px;
+            padding: 10px;
+            margin: 20px;
+            background-color: lightblue;
+        }
+
+        .inline-block-div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            background-color: blue;
+            color: white;
+        }
+
+        span {
+            display: inline;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            background-color: bisque;
+            color: green;
+        }
+
+        .block-div {
+            display: block;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            background-color: blue;
+            color: white;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inline-block-div">div-1</div>
+        <div class="inline-block-div">div-2</div>
+        <div class="inline-block-div">div-3</div>
+        <br>
+        <span>span-1</span>
+        <span>span-2</span>
+        <span>span-3</span>
+        <br>
+        <div class="block-div">
+            123456789101112
+        </div>
+    </div>
+</body>
+
+</html>

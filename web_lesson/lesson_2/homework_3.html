@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 所有div标签的宽度和高度均设置为300px，外边距设置为10px。 */
+        div {
+            height: 300px;
+            width: 300px;
+            margin: 10px;
+        }
+
+        /* 第一个div的背景颜色设置为lightblue。 */
+        div:nth-child(1) {
+            background-color: lightblue;
+        }
+
+        /* 第二个div的背景图片设置为url('/static/images/mountain.jpg')，背景图片大小设置为100% 100%，背景图片不重复。 */
+        div:nth-child(2) {
+            background-image: url('/static/images/mountain.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        /* 第三个div的背景图片设置为url('/static/images/mountain.jpg'), url('/static/images/logo.png')，背景图片大小设置为50% 100%, 50% 100%，两张背景图片均不重复，两张背景图片的位置设置为top left, 150px 0。 */
+        div:nth-child(3) {
+            background-image: url('/static/images/mountain.jpg'), url('/static/images/logo.png');
+            background-size: 50% 100%, 50% 100%;
+            background-repeat: no-repeat, no-repeat;
+            background-position: top left, 150px 0;
+        }
+
+        /* 第四个div的背景图片设置为url('/static/images/mountain.jpg')，背景图片大小设置为100% 100%，背景图片不重复，背景图片的位置在视口内固定。 */
+        div:nth-child(4) {
+            background-image: url('/static/images/mountain.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

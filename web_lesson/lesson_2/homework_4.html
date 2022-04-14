@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 所有div标签的宽度和高度均设置为300px */
+        div {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* 第一个div满足：
+        四条边的宽度为10px；
+        上右下左四条边的样式依次为：solid dotted inset dashed；
+        上下两条边的颜色为blue，左右两条边的颜色为red；
+        外边框圆角半径为50%； */
+        div:nth-child(1) {
+            border-width: 10px;
+            border-style: solid dotted inset dashed;
+            border-color: blue red;
+            border-radius: 50%;
+        }
+
+        /* 第二个div满足:
+        四条边的样式为：solid 3px black；
+        外边框圆角半径为10px； */
+        div:nth-child(2) {
+            border: solid 3px black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+</body>
+
+</html>
