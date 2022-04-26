@@ -31,7 +31,7 @@ let last_timestamp; //上一帧执行时刻
 
 let AC_GAME_OBJECTS_FRAME = (timestamp) => {  //timestamp它表示requestAnimationFrame() 开始去执行回调函数的时刻,时间戳
     for (let obj of AC_GAME_OBJECTS) {
-        if (!obj.has_call_start) {  //如果没有执行过start函数
+        if (!obj.has_call_start) {  //如果对象没有执行过start函数
             obj.start();
             obj.has_call_start = true;
         } else {
