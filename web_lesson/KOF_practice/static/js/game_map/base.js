@@ -1,4 +1,5 @@
 import { AcGameObject } from '/static/js/ac_game_object/base.js';
+import { Controller } from '/static/js/controller/base.js';
 
 export class GameMap extends AcGameObject { //继承
     constructor(root) {
@@ -10,6 +11,7 @@ export class GameMap extends AcGameObject { //继承
         this.root.$kof.append(this.$canvas); //将canvas加入id为kof的div里
         this.$canvas.focus(); //使得convas可以聚焦
 
+        this.controller = new Controller(this.$canvas); //将controller加入地图中，用于读取键盘输入
     }
 
     start() {    //开始时执行
