@@ -29,6 +29,11 @@ export class Player extends AcGameObject {
         this.animations = new Map(); //将每一个状态的动作用Map来存储
 
         this.frame_current_cnt = 0; //记录帧
+
+        this.hp = 100; //血量
+        this.$hp = this.root.$kof.find(`.kof-head-hp-${this.id}>div`); //jquery中.find用法：在所有后代元素中查找
+        this.$hp_div = this.$hp.find('div');
+
     }
 
     start() {
@@ -111,11 +116,79 @@ export class Player extends AcGameObject {
         }
     }
 
+    is_attack() {   //被攻击函数
+        if (this.status === 6) return;
+
+        this.status = 5;
+        this.frame_current_cnt = 0;
+
+        this.hp = Math.max(this.hp - 20, 0);
+
+        this.$hp_div.animate({  //jquery中.animate可以实现渐变效果
+            width: this.$hp.parent().width() * this.hp / 100  //通过更改血条宽度实现扣血的显示
+        }, 300);   //里面的div变化慢一些，实现掉血效果
+        this.$hp.animate({
+            width: this.$hp.parent().width() * this.hp / 100
+        }, 600);   //外面的div变化快一些
+
+        if (this.hp <= 0) {  //死亡
+            this.status = 6;
+            this.frame_current_cnt = 0;
+            this.vx = 0;
+        }
+    }
+
+    is_collision(r1, r2) { //碰撞检测
+        if (Math.max(r1.x1, r2.x1) > Math.min(r1.x2, r2.x2))
+            return false;
+        if (Math.max(r1.y1, r2.y1) > Math.min(r1.y2, r2.y2))
+            return false;
+        return true;
+    }
+
+    update_attack() {  //更新攻击函数
+        if (this.status === 4 && this.frame_current_cnt === 18) { //处于攻击状态，且在18帧时（18帧时拳头挥出去）
+            let me = this, you = this.root.players[1 - this.id];
+            let r1;
+
+            //r1出拳挥出的长方形，只要此长方形与人物模型长方形发生碰撞则认为击中了
+            if (this.direction > 0) {      //正方向
+                r1 = {
+                    x1: me.x + 120,
+                    y1: me.y + 40,
+                    x2: me.x + 120 + 100,
+                    y2: me.y + 40 + 20,
+                };
+            } else {    //反方向 
+                r1 = {
+                    x1: me.x + me.width - 120 - 100,
+                    y1: me.y + 40,
+                    x2: me.x + me.width - 120 - 100 + 100,
+                    y2: me.y + 40 + 20,
+                };
+            }
+
+            //r2为人物模型的长方形
+            let r2 = {
+                x1: you.x,
+                y1: you.y,
+                x2: you.x + you.width,
+                y2: you.y + you.height
+            };
+
+            if (this.is_collision(r1, r2)) {  //如果碰撞检测成立
+                you.is_attack(); //调用被攻击函数
+            }
+        }
+    }
+
+
 
     update() {
         this.update_move();
         this.update_control();
         this.update_direction();
+        this.update_attack();
 
         this.render(); //渲染
     }
@@ -160,8 +233,8 @@ export class Player extends AcGameObject {
 
         //状态为攻击，
         if (status === 4 || status === 5 || status === 6) {
-            if (this.frame_current_cnt == obj.frame_rate * (obj.frame_cnt - 1)) {
-                if (status === 6) {
+            if (this.frame_current_cnt == obj.frame_rate * (obj.frame_cnt - 1)) { //当前帧计数=图片帧数时，即一个动作执行完时
+                if (status === 6) {   //倒地死亡
                     this.frame_current_cnt--;
                 } else {
                     this.status = 0; // 回归静止状态

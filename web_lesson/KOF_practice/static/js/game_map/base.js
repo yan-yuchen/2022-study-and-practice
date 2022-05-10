@@ -12,6 +12,19 @@ export class GameMap extends AcGameObject { //继承
         this.$canvas.focus(); //使得convas可以聚焦
 
         this.controller = new Controller(this.$canvas); //将controller加入地图中，用于读取键盘输入
+
+        //增加地图上血条div
+        //地图上增加计时器div
+        //增加地图上血条div
+        this.root.$kof.append($(`<div class="kof-head">
+        <div class="kof-head-hp-0"><div><div></div></div></div>  
+        <div class="kof-head-timer">60</div>                     
+        <div class="kof-head-hp-1"><div><div></div></div></div>  
+    </div>`));
+
+        this.time_left = 60000;  // 单位：毫秒
+        this.$timer = this.root.$kof.find(".kof-head-timer");
+
     }
 
     start() {    //开始时执行
@@ -19,6 +32,20 @@ export class GameMap extends AcGameObject { //继承
     }
 
     update() {   //每一帧执行
+        this.time_left -= this.timedelta; //时间逐渐减少
+        if (this.time_left < 0) {  //时间结束后两人都死亡
+            this.time_left = 0;
+
+            let [a, b] = this.root.players;
+            if (a.status !== 6 && b.status !== 6) {
+                a.status = b.status = 6;
+                a.frame_current_cnt = b.frame_current_cnt = 0;
+                a.vx = b.vx = 0;
+            }
+        }
+
+        this.$timer.text(parseInt(this.time_left / 1000));  //修改time文本时间
+
         this.render();
     }
 
