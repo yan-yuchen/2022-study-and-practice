@@ -2,11 +2,11 @@
   <ContentBase>
       <div class="row">
         <div class="col-3">
-          <UserProfileInfo @follow123="follow" @unfollow123="unfollow" :user="user" />
-          <UserProfileWrite @post_a_post123="post_a_post" />
+          <UserProfileInfo @follow="follow" @unfollow="unfollow" :user="user" />
+          <UserProfileWrite v-if="is_me" @post_a_post="post_a_post" />
         </div>
         <div class="col-9">
-          <UserProfilePosts :posts="posts" />
+          <UserProfilePosts :user="user" :posts="posts" @delete_a_post="delete_a_post" />
         </div>
       </div>
   </ContentBase>
@@ -18,6 +18,10 @@ import UserProfileInfo from '../components/UserProfileInfo';
 import UserProfilePosts from '../components/UserProfilePosts';
 import UserProfileWrite from '../components/UserProfileWrite';
 import { reactive } from 'vue';
+import { useRoute } from 'vue-router';
+import $ from 'jquery';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
   name: 'UserList',
@@ -30,34 +34,45 @@ export default {
 
   // 初始化变量、函数
   setup() {
-    const user = reactive({
-      id: 1,
-      username: "YanYuchen",
-      lastName: "Yan",
-      firstName: "Yuchen",
-      followerCount: 0,
-      is_followed: false,
+    const store = useStore();
+    const route = useRoute();
+    const userId = parseInt(route.params.userId);
+    const user = reactive({});
+    const posts = reactive({});
+
+    // 获取用户信息
+    $.ajax({
+      url: "https://app165.acapp.acwing.com.cn/myspace/getinfo/",
+      type: "GET",
+      data: {
+        user_id: userId,
+      },
+      headers: {
+        'Authorization': "Bearer " + store.state.user.access,
+      },
+      success(resp) {
+        user.id = resp.id;
+        user.username = resp.username;
+        user.photo = resp.photo;
+        user.followerCount = resp.followerCount;
+        user.is_followed = resp.is_followed;
+      }
     });
 
-    const posts = reactive({
-      count: 3,
-      posts: [
-        {
-          id: 1,
-          userId: 1,
-          content: "今天上了web课真开心",
-        },
-        {
-          id: 2,
-          userId: 1,
-          content: "今天上了算法课，更开心了",
-        },
-        {
-          id: 3,
-          userId: 1,
-          content: "今天上了acwing ，开心极了",
-        },
-      ]
+    // 获取用户的所有帖子
+    $.ajax({
+      url: "https://app165.acapp.acwing.com.cn/myspace/post/",
+      type: "GET",
+      data: {
+        user_id: userId,
+      },
+      headers: {
+        'Authorization': "Bearer " + store.state.user.access,
+      },
+      success(resp) {
+        posts.count = resp.length;
+        posts.posts = resp;
+      }
     });
 
     // 关注函数
@@ -84,12 +99,22 @@ export default {
       })
     };
 
+    // 删除帖子
+    const delete_a_post = post_id => {
+      posts.posts = posts.posts.filter(post => post.id !== post_id);
+      posts.count = posts.posts.length;
+    }
+    
+    const is_me = computed(() => userId === store.state.user.id);
+
     return {
       user,
       follow,
       unfollow,
       posts,
-      post_a_post
+      post_a_post,
+      delete_a_post,
+      is_me,
     }
   }
 }

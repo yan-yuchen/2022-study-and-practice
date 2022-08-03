@@ -3,8 +3,7 @@
     <div class="card-body">
       <label for="edit-post" class="form-label">编辑帖子</label>
       <textarea v-model="content" class="form-control" id="edit-post" rows="3"></textarea>
-      <!-- @click绑定函数post_a_post,点击调用函数post_a_post -->
-      <button @click="post_a_post" type="button" class="btn btn-primary btn-sm">发帖</button>
+      <button @click="post_a_post123" type="button" class="btn btn-primary btn-sm">发帖</button>
     </div>
   </div>
 </template>
@@ -12,20 +11,39 @@
 
 <script>
 import { ref } from 'vue';
+import $ from 'jquery';
+import { useStore } from 'vuex';
 
 export default {
     name: "UserProfileWrite",
     setup(props, context) {
+        const store = useStore();
         let content = ref('');
 
-        const post_a_post = () => {
-            context.emit('post_a_post123', content.value);  // 触发父组件中的post_a_post
-            content.value = "";
+        // 发帖
+        const post_a_post123 = () => {
+            $.ajax({
+              url: "https://app165.acapp.acwing.com.cn/myspace/post/",
+              type: "POST",
+              data: {
+                content: content.value,
+              },
+              headers: {
+                'Authorization': "Bearer " + store.state.user.access,
+              },
+              success(resp) {
+                if (resp.result === "success") {
+                  context.emit('post_a_post', content.value);    // 触发父组件中的post_a_post
+
+                  content.value = "";
+                }
+              }
+            });
         };
 
         return {
             content,
-            post_a_post,
+            post_a_post123,
         }
     }
 }
