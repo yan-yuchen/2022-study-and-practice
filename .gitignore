@@ -13,6 +13,8 @@
 **.mp4
 **.pyc
 **.model
+**.doc
+**.docx
 Taxi_HKUST/taxi/
 T-drive Taxi Trajectories/release/
 pytorch_study/data
